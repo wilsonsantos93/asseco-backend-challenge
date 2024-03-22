@@ -47,10 +47,12 @@ public class Station {
     public String getConcelho() { return this.concelho; }
     public String getFreguesia() { return this.freguesia; }
     public String getLocation() { return this.location; }
+    public int getTotalVoters() { return this.totalVoters; }
     
     public void setId(int id) { this.id = id; }
     public void setDistrito(String distrito) { this.distrito = distrito; }
     public void setConcelho(String concelho) { this.concelho = concelho; }
     public void setFreguesia(String freguesia) { this.freguesia = freguesia; }
     public void setLocation(String location) { this.location = location; }
+    public void setTotalVoters(int totalVoters) { this.totalVoters = totalVoters; }
 }
