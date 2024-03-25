@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "Get all stations", description = "Gets all stations from database.")
+@Operation(summary = "Get all stations (or filter by parameters)", description = "Gets all stations (filtered or not) from database.")
 @ApiResponses(value = {
     @ApiResponse(
         responseCode = "200", 
