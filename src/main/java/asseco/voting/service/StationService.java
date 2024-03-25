@@ -11,7 +11,10 @@ import org.springframework.web.server.ResponseStatusException;
 import asseco.voting.dto.station.AbstractStationDTO;
 import asseco.voting.dto.station.StationDTO;
 import asseco.voting.dto.station.StationWithTotalVotersDTO;
+import asseco.voting.dto.voter.AbstractVoterDTO;
+import asseco.voting.dto.voter.VoterDTO;
 import asseco.voting.entity.Station;
+import asseco.voting.entity.Voter;
 import asseco.voting.repository.StationRepository;
 
 import org.springframework.beans.BeanUtils;
@@ -70,6 +73,19 @@ public class StationService implements ICrudService<AbstractStationDTO> {
         BeanUtils.copyProperties(station, stationDTO);
 
         return stationDTO;
+    }
+
+
+    /* Get station by parameters */
+    public List<AbstractStationDTO> getByParameters(String distrito, String freguesia, String location) {
+        List<Station> stations = repository.findByParameters(distrito, freguesia, location);
+        return stations.stream()
+                .map(station -> {
+                    StationWithTotalVotersDTO stationDTO = new StationWithTotalVotersDTO();
+                    BeanUtils.copyProperties(station, stationDTO);
+                    return stationDTO;
+                })
+                .collect(Collectors.toList());
     }
 
 

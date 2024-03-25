@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import asseco.voting.dto.station.AbstractStationDTO;
@@ -35,8 +36,12 @@ public class StationController {
     // Get all stations
     @GetMapping("/stations")
     @GetAllStationsSwagger
-    List<AbstractStationDTO> all() {
-        return service.all();
+    List<AbstractStationDTO> all(
+        @RequestParam(name="distrito", required = false) String distrito, 
+        @RequestParam(name="freguesia", required = false) String freguesia,
+        @RequestParam(name="location", required = false) String location
+    ) {
+        return service.getByParameters(distrito, freguesia, location);
     }
     
     // Create station
